@@ -1,7 +1,7 @@
 #ifndef XXZ_STRING
 #include<iostream>
 #define XXZ_STRING
-#define isSpace(x) ((x)=='\n'||(x)==' '||(x)=='\t')
+#define isSpace(x) ((x)==' '||(x)=='\t'||(x)=='\n')
 class xxzString{
 
 private :
@@ -49,11 +49,11 @@ public :
 
 
 	int operator==(const xxzString& other)const{
-		return strcmp(__str, other.__str);
+		return 0==strcmp(__str, other.__str);
 	}
 
 	int operator==(const char* c)const{
-		return strcmp(__str, c);
+		return 0==strcmp(__str, c);
 	}
 
 	char* getStr(){
@@ -75,10 +75,10 @@ std::ostream& operator<<(std::ostream& cout, xxzString& xxz){
 std::istream& operator>>(std::istream& cin, xxzString& xxz){
 	char c;
 	while (isSpace(cin.peek())){
-		cin >> c;
+		c = cin.get();
 	}
 	do{
-		cin >> c;
+		c = cin.get();
 		if (xxz.size <= xxz.length - 2) 
 			xxz.expand();
 		xxz.__str[xxz.length++] = c;
