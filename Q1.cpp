@@ -41,7 +41,7 @@ record rcd[201];
 int cmd_cnt = 0;
 int rcd_cnt = -1;
 int main(){
-	while (cin.peek() != EOF&&cin.peek()!='\n'){
+	while (cin.peek() != EOF&&cin.peek()!='\t'&&cmd_cnt<5){
 		cin >> cmd[cmd_cnt++];
 	}
 	int seg_cnt = 0;
@@ -66,7 +66,8 @@ int main(){
 		}
 		
 	}
-	for (int i = 0; i < rcd_cnt; i++){
+	rcd[rcd_cnt].addr_end = "#";
+	for (int i = 0; i <= rcd_cnt; i++){
 		cout << rcd[i];
 		cout << endl;
 	}
